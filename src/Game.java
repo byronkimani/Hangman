@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public class Game {
     File moviefile;
 
     void start(){
-        
+        //Instantiating the other classes.
         UserInteraction ui = new UserInteraction();
         GameLogic logic = new GameLogic();
         openFile();
@@ -23,9 +24,10 @@ public class Game {
     //Open the txt file.
     void openFile() {
         try {
-            moviefile = new File("C:\\Users\\Spectre\\Documents\\Hangman\\Hangman\\src\\movies.txt");
+            URL url = getClass().getResource("movies.txt");
+            moviefile = new File(url.getPath());
             in = new Scanner(moviefile);
-
+            
         } catch (FileNotFoundException ex) {
             System.out.println("An error occured while opening the file");;
         }
@@ -51,6 +53,7 @@ public class Game {
             lnum++;
         }
         line = in.nextLine();
+        //For testing...
         //System.out.println(line);
         return line;
     }

@@ -10,7 +10,13 @@ public class UserInteraction {
         in = new Scanner(System.in);
         System.out.println("Java GuessTheMovie");
         System.out.println("Please enter 0  to start game:");
-        int input = in.nextInt();
+        int input = 0;
+        try {
+            input = in.nextInt();
+        } catch (Exception e) {
+            System.out.println("Wrong input! Please try again");
+            return 1;
+        }
         return input;
     }
 
